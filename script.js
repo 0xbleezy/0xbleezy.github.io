@@ -13,32 +13,30 @@ function updateTimer() {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  document.getElementById('timer').innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+  document.getElementById('timer').innerHTML = `${days}:${hours}:${minutes}:${seconds}`;
 
   setTimeout(updateTimer, 1000);
 }
 
-updateTimer();
-
 async function submitForm() {
-  const email = document.getElementById('email-input').value;
-  if (!email) return;
+  const form = document.getElementById('email-form');
+  const emailInput = document.getElementById('email-input');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxfjbYx0SWD1HIjnaceB5EQDMKzZI9V1YARPwuWeHGyec6gu6NZnftSOc_IS3WLU_4O1A/exec'; // Replace with the Google Apps Script web app URL
 
-  const url = 'https://api.apispreadsheets.com/data/12345/';
-  const data = {
-    data: { Email: email }
-  };
+  if (form.checkValidity()) {
+    const response = await fetch(scriptURL, {
+      method: 'POST',
+      body: new FormData(form),
+    });
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  if (response.status === 201) {
-    alert('Thank you for subscribing!');
+    if (response.ok) {
+      alert('Email submitted successfully!');
+      emailInput.value = '';
+    } else {
+      alert('Error submitting email. Please try again later.');
+    }
   } else {
-    alert('There was an error. Please try again.');
+    form.reportValidity();
   }
 }
 
@@ -46,3 +44,5 @@ document.getElementById('email-form').addEventListener('submit', (event) => {
   event.preventDefault();
   submitForm();
 });
+
+updateTimer();
