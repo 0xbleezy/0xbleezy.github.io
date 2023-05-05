@@ -2,39 +2,40 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Lorem Ipsum - Coming Soon</title>
-		<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
-		<style>
-			body {
-				font-family: 'Urbanist', Arial, sans-serif;
-				text-align: center;
-				background-color: #1a1a1a;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				height: 100vh;
-				margin: 0;
-			}
-
-			h1,
-			p {
-				color: #f0e9e2;
-			}
-
-			h1 {
-				font-size: 12rem;
-				margin-bottom: 1rem;
-			}
-
-			p {
-				font-size: .9rem;
-			}
-		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="An engaging and accessible website for email subscriptions">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="styles.css">
+		<title>Email Subscription</title>
 	</head>
 	<body>
-		<h1>Lorem Ipsum</h1>
-		<p>Coming Soon</p>
+		<header>
+			<nav>
+				<ul class="nav-links">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<div class="video-container">
+				<video autoplay muted loop playsinline>
+					<source src="https://0xbleezy.github.io/loremipsum/video.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+				<div class="content">
+					<h1 class="coming-soon">Coming Soon</h1>
+					<div id="timer" class="countdown-timer" role="timer" aria-label="Countdown timer"></div>
+					<form class="email-form" id="email-form">
+						<input type="email" id="email-input" placeholder="  Enter your email" required aria-required="true" aria-label="Enter your email">
+						<button type="button" onclick="submitForm()" class="subscribe-btn">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</main>
+		<script src="script.js"></script>
 	</body>
 </html>
