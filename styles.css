@@ -8,13 +8,21 @@ body {
 	font-family: 'Urbanist', sans-serif;
 	line-height: 1.6;
 	color: #fff;
+	background-color: #000;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
 }
 
 .video-container {
+	width: 100%;
+	height: 90%;
 	position: relative;
 	overflow: hidden;
-	width: 100%;
-	height: 100vh;
 }
 
 video {
@@ -36,14 +44,10 @@ video {
 }
 
 .top-bar {
-	position: absolute;
-	top: 0;
 	width: 100%;
 }
 
 .bottom-bar {
-	position: absolute;
-	bottom: 0;
 	width: 100%;
 	align-items: flex-end;
 }
